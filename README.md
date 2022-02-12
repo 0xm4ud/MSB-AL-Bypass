@@ -1,5 +1,5 @@
-# AppLockerBypass
-C# shellcode runner adapted to run from a csproj to be triggered by MSBuild
+# AL bypass
+MSBuild AL bypass
 
 Xor shellcode for this craft against 0xfa. 
 

